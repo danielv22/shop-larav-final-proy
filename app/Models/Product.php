@@ -11,7 +11,6 @@ class Product extends Model
     use HasFactory;
 
     protected $primaryKey = 'product_id';
-
     protected $fillable = [
         'reference',
         'name',
@@ -29,5 +28,10 @@ class Product extends Model
             'fk_product_id',
             'fk_category_id'
         );
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

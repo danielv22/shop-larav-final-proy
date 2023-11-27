@@ -73,6 +73,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->status = $request->status;
         $product->photo_name = $fileName;
+        $product->slug = Str::slug($request->name);
         $product->save();
 
         $productCategory->fk_product_id = Product::select('product_id')->where('reference', $request->reference)->get()[0]->product_id;
@@ -141,6 +142,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->status = $request->status;
         $product->photo_name = $fileName;
+        $product->slug = Str::slug($request->name);
         $product->update();
 
         $productCategory->fk_category_id = intval($request->category);

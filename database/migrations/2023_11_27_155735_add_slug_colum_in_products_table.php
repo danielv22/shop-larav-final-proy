@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('fk_role_id')->default(2)->change();
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('slug')->after('photo_name');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('fk_role_id')->nullable()->after('profile_photo_path');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('slug');
         });
     }
 };
