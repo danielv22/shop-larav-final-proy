@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -15,6 +17,9 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', [ProductController::class, 'getAvailableProducts']);
+Route::resource('dashboard/products', ProductController::class);
+Route::resource('dashboard/categories', CategoryController::class);
+Route::resource('dashboard/roles', RoleController::class);
 
 Route::middleware([
     'auth:sanctum',
